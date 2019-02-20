@@ -4,6 +4,7 @@ import { StandardItem } from '../app/items/standard-item';
 import { AgedItem } from '../app/items/aged-item';
 import { LegendaryItem } from '../app/items/legendary-item';
 import { BackstagePassItem } from '../app/items/backstage-pass-item';
+import { ConjuredItem } from '../app/items/conjured-item';
 
 const items = [
     new StandardItem("+5 Dexterity Vest", 10, 20), //
@@ -14,8 +15,7 @@ const items = [
     new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
     new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
     new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-    // this conjured item does not work properly yet
-    // new Item("Conjured Mana Cake", 3, 6)
+    new ConjuredItem("Conjured Mana Cake", 3, 6)
 ];
 
 

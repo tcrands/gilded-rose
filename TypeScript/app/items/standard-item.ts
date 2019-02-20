@@ -17,6 +17,5 @@ export class StandardItem extends Item {
         } else {
             this.quality = 0
         }
-        
     }
 }

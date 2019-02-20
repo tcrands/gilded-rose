@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import { GildedRose } from '../app/gilded-rose';
-import { Item } from '../app/items/item';
 import { StandardItem } from '../app/items/standard-item';
 import { AgedItem } from '../app/items/aged-item';
 import { LegendaryItem } from '../app/items/legendary-item';
