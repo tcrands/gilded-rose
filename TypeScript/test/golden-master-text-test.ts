@@ -3,6 +3,7 @@ import { Item } from '../app/items/item';
 import { StandardItem } from '../app/items/standard-item';
 import { AgedItem } from '../app/items/aged-item';
 import { LegendaryItem } from '../app/items/legendary-item';
+import { BackstagePassItem } from '../app/items/backstage-pass-item';
 
 const items = [
     new StandardItem("+5 Dexterity Vest", 10, 20), //
@@ -10,11 +11,12 @@ const items = [
     new StandardItem("Elixir of the Mongoose", 5, 7), //
     new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80), //
     new LegendaryItem("Sulfuras, Hand of Ragnaros", -1, 80),
-    new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-    new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-    new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+    new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+    new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+    new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
     // this conjured item does not work properly yet
-    new Item("Conjured Mana Cake", 3, 6)];
+    // new Item("Conjured Mana Cake", 3, 6)
+];
 
 
 const gildedRose = new GildedRose(items);

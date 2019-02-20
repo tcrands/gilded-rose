@@ -1,5 +1,7 @@
 import { Item } from "./items/item";
 import { StandardItem } from "./items/standard-item";
 import { AgedItem } from "./items/aged-item";
+import { BackstagePassItem } from "./items/backstage-pass-item";
+import { LegendaryItem } from "./items/legendary-item";
 
-export type ItemUnion = Item | StandardItem | AgedItem
+export type ItemUnion = StandardItem | AgedItem | LegendaryItem | BackstagePassItem

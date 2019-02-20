@@ -4,6 +4,7 @@ import { Item } from '../app/items/item';
 import { StandardItem } from '../app/items/standard-item';
 import { AgedItem } from '../app/items/aged-item';
 import { LegendaryItem } from '../app/items/legendary-item';
+import { BackstagePassItem } from '../app/items/backstage-pass-item';
 
 describe('Gilded Rose', function () {
     it('should correctly update +5 Dexterity Vest', function() {
@@ -47,7 +48,7 @@ describe('Gilded Rose', function () {
     });
 
     it('should correctly update Backstage passes to a TAFKAL80ETC concert with sellIn of 15 and quality 20', function() {
-        const gildedRose = new GildedRose([ new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20) ]);
+        const gildedRose = new GildedRose([ new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 15, 20) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).to.equal('Backstage passes to a TAFKAL80ETC concert');
         expect(items[0].sellIn).to.equal(14);
@@ -55,7 +56,7 @@ describe('Gilded Rose', function () {
     });
 
     it('should correctly update Backstage passes to a TAFKAL80ETC concert with sellIn of 10 and quality 49', function() {
-        const gildedRose = new GildedRose([ new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49) ]);
+        const gildedRose = new GildedRose([ new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 10, 49) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).to.equal('Backstage passes to a TAFKAL80ETC concert');
         expect(items[0].sellIn).to.equal(9);
@@ -63,10 +64,10 @@ describe('Gilded Rose', function () {
     });
 
     it('should correctly update Backstage passes to a TAFKAL80ETC concert with sellIn of 5 and quality 50', function() {
-        const gildedRose = new GildedRose([ new Item("Backstage passes to a TAFKAL80ETC concert", 12, 55) ]);
+        const gildedRose = new GildedRose([ new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 12, 55) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).to.equal('Backstage passes to a TAFKAL80ETC concert');
         expect(items[0].sellIn).to.equal(11);
-        expect(items[0].quality).to.equal(55);
+        expect(items[0].quality).to.equal(50);
     });
 });
