@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { LegendaryItem } from '../app/items/legendary-item';
+import { LegendaryItem } from '../../app/items/legendary-item';
 
 describe('LegendaryItem', function () {
     it('should correctly update Legendary item', function() {

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { BackstagePassItem } from '../app/items/backstage-pass-item';
+import { BackstagePassItem } from '../../app/items/backstage-pass-item';
 
 describe('BackstagePassItem', function () {
     it('should correctly update BackstagePass item', function() {

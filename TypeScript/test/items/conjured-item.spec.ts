@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { ConjuredItem } from '../app/items/conjured-item';
+import { ConjuredItem } from '../../app/items/conjured-item';
 
 describe('ConjuredItem', function () {
     it('should correctly update a ConjuredItem', function() {

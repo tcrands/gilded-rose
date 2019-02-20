@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { AgedItem } from '../app/items/aged-item';
+import { AgedItem } from '../../app/items/aged-item';
 
 describe('AgedItem', function () {
     it('should correctly update Aged item', function() {

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { StandardItem } from '../app/items/standard-item';
+import { StandardItem } from '../../app/items/standard-item';
 
 describe('StandardItem', function () {
     it('should correctly update a StandardItem', function() {
