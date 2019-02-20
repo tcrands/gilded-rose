@@ -2,6 +2,8 @@ import { expect } from 'chai';
 import { GildedRose } from '../app/gilded-rose';
 import { Item } from '../app/items/item';
 import { StandardItem } from '../app/items/standard-item';
+import { AgedItem } from '../app/items/aged-item';
+import { LegendaryItem } from '../app/items/legendary-item';
 
 describe('Gilded Rose', function () {
     it('should correctly update +5 Dexterity Vest', function() {
@@ -13,7 +15,7 @@ describe('Gilded Rose', function () {
     });
 
     it('should correctly update Aged Brie', function() {
-        const gildedRose = new GildedRose([ new Item("Aged Brie", 2, 0) ]);
+        const gildedRose = new GildedRose([ new AgedItem("Aged Brie", 2, 0) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).to.equal('Aged Brie');
         expect(items[0].sellIn).to.equal(1);
@@ -29,7 +31,7 @@ describe('Gilded Rose', function () {
     });
 
     it('should correctly update Sulfuras, Hand of Ragnaros with sellIn of 0', function() {
-        const gildedRose = new GildedRose([ new Item("Sulfuras, Hand of Ragnaros", 0, 80) ]);
+        const gildedRose = new GildedRose([ new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).to.equal('Sulfuras, Hand of Ragnaros');
         expect(items[0].sellIn).to.equal(0);
@@ -37,7 +39,7 @@ describe('Gilded Rose', function () {
     });
 
     it('should correctly update Sulfuras, Hand of Ragnaros with sellIn of -1', function() {
-        const gildedRose = new GildedRose([ new Item("Sulfuras, Hand of Ragnaros", -1, 80) ]);
+        const gildedRose = new GildedRose([ new LegendaryItem("Sulfuras, Hand of Ragnaros", -1, 80) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).to.equal('Sulfuras, Hand of Ragnaros');
         expect(items[0].sellIn).to.equal(-1);
