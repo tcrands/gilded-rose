@@ -1,11 +1,10 @@
-import { Item } from "../gilded-rose";
+import { Item } from "./item";
 
 export class StandardItem extends Item {
     updateItem() {
         this.sellIn--
         this.quality--
         this._updateQuality()
-
     }
 
     _updateQuality() {

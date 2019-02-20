@@ -1,9 +1,11 @@
 import { expect } from 'chai';
-import { Item, GildedRose } from '../app/gilded-rose';
+import { GildedRose } from '../app/gilded-rose';
+import { Item } from '../app/items/item';
+import { StandardItem } from '../app/items/standard-item';
 
 describe('Gilded Rose', function () {
     it('should correctly update +5 Dexterity Vest', function() {
-        const gildedRose = new GildedRose([ new Item("+5 Dexterity Vest", 10, 20) ]);
+        const gildedRose = new GildedRose([ new StandardItem("+5 Dexterity Vest", 10, 20) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).to.equal('+5 Dexterity Vest');
         expect(items[0].sellIn).to.equal(9);
@@ -19,7 +21,7 @@ describe('Gilded Rose', function () {
     });
 
     it('should correctly update Elixir of the Mongoose', function() {
-        const gildedRose = new GildedRose([ new Item("Elixir of the Mongoose", 5, 7) ]);
+        const gildedRose = new GildedRose([ new StandardItem("Elixir of the Mongoose", 5, 7) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).to.equal('Elixir of the Mongoose');
         expect(items[0].sellIn).to.equal(4);
