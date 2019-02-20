@@ -8,7 +8,7 @@ export class StandardItem extends Item {
     }
 
     _updateQuality() {
-        if (this.sellIn <= 0) {
+        if (this.sellIn <= 0 && this.quality > 0) {
             this.quality--
         } 
     }

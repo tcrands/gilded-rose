@@ -9,6 +9,8 @@ export class AgedItem extends Item {
     _updateQuality() {
         if (this.quality < 50) {
             this.quality++
+        } else {
+            this.quality = 50 
         } 
     }
 }

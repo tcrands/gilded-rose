@@ -1,30 +1,22 @@
-import { Item } from "./item";
+import { AgedItem } from "./aged-item";
 
-export class BackstagePassItem extends Item {
+export class BackstagePassItem extends AgedItem {
     updateItem() {
         this.sellIn--
-        this._updateQuality()
-        this._sanitizeData()
+        this._caluculateQuality()
     }
 
-    _updateQuality() {
-        if (this.quality < 50) {
-            this.quality++
-        } 
-        if (this.sellIn < 11) {
-            this.quality++
-        }
-        if (this.sellIn < 6) {
-            this.quality++
-        }
+    _caluculateQuality() {
         if (this.sellIn <= 0) {
             this.quality = 0
+            return;
         }
-    }
-
-    _sanitizeData() {
-        if (this.quality > 50) {
-            this.quality = 50
+        this._updateQuality()
+        if (this.sellIn < 11) {
+            this._updateQuality()
+        }
+        if (this.sellIn < 6) {
+            this._updateQuality()
         }
     }
 }
