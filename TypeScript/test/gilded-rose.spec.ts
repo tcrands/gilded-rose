@@ -39,8 +39,7 @@ describe('Gilded Rose', function () {
             const expectedItem = expectedItems[i];
             expect(item.name).to.equal(expectedItem.name);
             expect(item.quality).to.equal(expectedItem.quality);
-            expect(item.sellIn).to.equal(expectedItem.sellIn);
-            
+            expect(item.sellIn).to.equal(expectedItem.sellIn);  
         }
     });
 });
