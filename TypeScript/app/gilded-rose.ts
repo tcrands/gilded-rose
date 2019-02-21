@@ -10,9 +10,6 @@ export class GildedRose {
     updateQuality() {
         this.items.forEach(item => {
             item.updateItem() 
-            if (item.quality < 0) {
-                item.quality = 0
-            }
         });
         return this.items;
     }

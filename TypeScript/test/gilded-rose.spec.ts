@@ -4,69 +4,43 @@ import { StandardItem } from '../app/items/standard-item';
 import { AgedItem } from '../app/items/aged-item';
 import { LegendaryItem } from '../app/items/legendary-item';
 import { BackstagePassItem } from '../app/items/backstage-pass-item';
+import { ConjuredItem } from '../app/items/conjured-item';
 
 describe('Gilded Rose', function () {
-    it('should correctly update +5 Dexterity Vest', function() {
-        const gildedRose = new GildedRose([ new StandardItem("+5 Dexterity Vest", 10, 20) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('+5 Dexterity Vest');
-        expect(items[0].sellIn).to.equal(9);
-        expect(items[0].quality).to.equal(19);
-    });
+    it('should calculate all item correctly', function() {
+        const items = [
+            new StandardItem("+5 Dexterity Vest", 10, 20), //
+            new AgedItem("Aged Brie", 2, 0), //
+            new StandardItem("Elixir of the Mongoose", 5, 7), //
+            new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80), //
+            new LegendaryItem("Sulfuras, Hand of Ragnaros", -1, 80),
+            new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+            new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+            new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+            new ConjuredItem("Conjured Mana Cake", 3, 6)
+        ];
 
-    it('should correctly update Aged Brie', function() {
-        const gildedRose = new GildedRose([ new AgedItem("Aged Brie", 2, 0) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('Aged Brie');
-        expect(items[0].sellIn).to.equal(1);
-        expect(items[0].quality).to.equal(1);
-    });
+        const expectedItems = [
+            { name: "+5 Dexterity Vest", quality: 19, sellIn: 9 },
+            { name: "Aged Brie", quality: 1, sellIn: 1 },
+            { name: "Elixir of the Mongoose", quality: 6, sellIn: 4 },
+            { name: "Sulfuras, Hand of Ragnaros", quality: 80, sellIn: 0 },
+            { name: "Sulfuras, Hand of Ragnaros", quality: 80, sellIn: -1 },
+            { name: "Backstage passes to a TAFKAL80ETC concert", quality: 21, sellIn: 14 },
+            { name: "Backstage passes to a TAFKAL80ETC concert", quality: 50, sellIn: 9 },
+            { name: "Backstage passes to a TAFKAL80ETC concert", quality: 50, sellIn: 4 },
+            { name: "Conjured Mana Cake", quality: 4, sellIn: 2 },
+        ]
 
-    it('should correctly update Elixir of the Mongoose', function() {
-        const gildedRose = new GildedRose([ new StandardItem("Elixir of the Mongoose", 5, 7) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('Elixir of the Mongoose');
-        expect(items[0].sellIn).to.equal(4);
-        expect(items[0].quality).to.equal(6);
-    });
-
-    it('should correctly update Sulfuras, Hand of Ragnaros with sellIn of 0', function() {
-        const gildedRose = new GildedRose([ new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('Sulfuras, Hand of Ragnaros');
-        expect(items[0].sellIn).to.equal(0);
-        expect(items[0].quality).to.equal(80);
-    });
-
-    it('should correctly update Sulfuras, Hand of Ragnaros with sellIn of -1', function() {
-        const gildedRose = new GildedRose([ new LegendaryItem("Sulfuras, Hand of Ragnaros", -1, 80) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('Sulfuras, Hand of Ragnaros');
-        expect(items[0].sellIn).to.equal(-1);
-        expect(items[0].quality).to.equal(80);
-    });
-
-    it('should correctly update Backstage passes to a TAFKAL80ETC concert with sellIn of 15 and quality 20', function() {
-        const gildedRose = new GildedRose([ new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 15, 20) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('Backstage passes to a TAFKAL80ETC concert');
-        expect(items[0].sellIn).to.equal(14);
-        expect(items[0].quality).to.equal(21);
-    });
-
-    it('should correctly update Backstage passes to a TAFKAL80ETC concert with sellIn of 10 and quality 49', function() {
-        const gildedRose = new GildedRose([ new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 10, 49) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('Backstage passes to a TAFKAL80ETC concert');
-        expect(items[0].sellIn).to.equal(9);
-        expect(items[0].quality).to.equal(50);
-    });
-
-    it('should correctly update Backstage passes to a TAFKAL80ETC concert with sellIn of 5 and quality 50', function() {
-        const gildedRose = new GildedRose([ new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 12, 55) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('Backstage passes to a TAFKAL80ETC concert');
-        expect(items[0].sellIn).to.equal(11);
-        expect(items[0].quality).to.equal(50);
+        const gildedRose = new GildedRose(items);
+        const result = gildedRose.updateQuality();
+        for (let i = 0; i < result.length; i++) {
+            const item = result[i];
+            const expectedItem = expectedItems[i];
+            expect(item.name).to.equal(expectedItem.name);
+            expect(item.quality).to.equal(expectedItem.quality);
+            expect(item.sellIn).to.equal(expectedItem.sellIn);
+            
+        }
     });
 });
